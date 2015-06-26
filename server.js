@@ -5,7 +5,7 @@ var methodOverride  = require('method-override');
 var app             = express();
 var port            = process.env.PORT || 8080;
 
-app.use(express.static(__dirname + '/public'));    
+app.use(express.static(__dirname + '/bin'));    
 app.use(morgan('dev'));                     
 app.use(bodyParser());                      
 app.use(methodOverride());         

@@ -2,7 +2,7 @@
   "name": "angular",
   "version": "1.4.x",
   "dependencies": {
-    "bootstrap": "latest",
+    "bootstrap-sass-official": "latest",
     "angular": "latest",
     "angular-ui-router": "latest"	
   }

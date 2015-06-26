@@ -12,4 +12,7 @@ ecosystem.json5
 
 #don't store libs to repo
 node_modules
-public/libs
+vendor
+
+#ignore contents of bin directory
+bin
