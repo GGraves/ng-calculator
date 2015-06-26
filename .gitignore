@@ -6,6 +6,10 @@
 
 .DS_Store
 
+#ignore the PM2 ecosystem file used for deployment to server
+
+ecosystem.json5
+
 #don't store libs to repo
 node_modules
 public/libs

@@ -1,0 +1,24 @@
+{
+  apps : [
+    {
+      name      : "My-Fake-App-Name",
+      script    : "My-Fake-NodeJS-Script.js",
+      env: {
+        COMMON_VARIABLE: "true"
+      },
+      env_production : {
+        NODE_ENV: "production"
+      }
+    }
+  ],
+  deploy : {
+    production : {
+      user : "My-Fake-Username",
+      host : "My.Fake.IP.Address",
+      ref  : "origin/master",
+      repo : "git@github.com:My-Fake-Git-Username/My-Fake-Repo.git",
+      path : "/My-Fake-Dest-Path-For-Deployment",
+      "post-deploy" : "pm2 startOrRestart ecosystem.json5 --env production"
+    }
+  }
+}
