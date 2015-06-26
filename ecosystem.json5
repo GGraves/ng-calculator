@@ -2,7 +2,7 @@
   apps : [
     {
       name      : "Calculator",
-      script    : "./grunt",
+      script    : "./node_modules/grunt/lib/grunt",
       args      : "['serve:dist']",
       env: {
         COMMON_VARIABLE: "true"
