@@ -20,9 +20,12 @@ module.exports = function(grunt) {
 
     //compile.scss  
     sass: {
-      dist: {
-        files: {
-          'bin/css/style.css' : 'src/assets/css/style.scss'
+      build: {
+        options: {                      
+          style: 'expanded'
+        },
+        files: {                        
+          'src/assets/css/style.scss': 'bin/css/style.css'
         }
       }
     },
