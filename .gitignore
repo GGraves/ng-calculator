@@ -16,6 +16,3 @@ vendor
 
 #ignore contents of bin directory
 bin
-
-#ignore sass cache
-.sass-cache

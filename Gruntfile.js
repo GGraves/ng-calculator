@@ -23,7 +23,8 @@ module.exports = function(grunt) {
       build: {
         options: {                      
           style: 'expanded',
-          sourcemap: 'none'
+          sourcemap: 'none',
+          noCache: 'true'
         },
         files: {                        
           'bin/css/styles.css': 'src/assets/css/styles.scss'
