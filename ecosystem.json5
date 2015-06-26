@@ -2,7 +2,7 @@
   apps : [
     {
       name      : "Calculator",
-      script    : "/usr/bin/grunt",
+      script    : "./grunt",
       args      : "['serve:dist']",
       env: {
         COMMON_VARIABLE: "true"
