@@ -22,10 +22,11 @@ module.exports = function(grunt) {
     sass: {
       build: {
         options: {                      
-          style: 'expanded'
+          style: 'expanded',
+          sourcemap: 'none'
         },
         files: {                        
-          'src/assets/css/style.scss': 'bin/css/style.css'
+          'bin/css/styles.css': 'src/assets/css/styles.scss'
         }
       }
     },
