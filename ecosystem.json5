@@ -1,0 +1,25 @@
+{
+  apps : [
+    {
+      name      : "Calculator",
+      script    : "/usr/bin/grunt",
+      args      : "['serve:dist']",
+      env: {
+        COMMON_VARIABLE: "true"
+      },
+      env_production : {
+        NODE_ENV: "production"
+      }
+    }
+  ],
+  deploy : {
+    production : {
+      user : "sever",
+      host : "45.55.20.219",
+      ref  : "origin/master",
+      repo : "git@github.com:GGraves/ng-calculator.git",
+      path : "/home/sever",
+      "post-deploy" : "npm install && bower install && pm2 startOrRestart ecosystem.json5 --env production"
+    }
+  }
+}
