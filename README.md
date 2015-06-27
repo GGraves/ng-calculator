@@ -17,14 +17,14 @@ Target delivery date of: Monday, June 29th
 ```
 
 - [ ] Application Prep: 6 hours
-  - [ ] Set up Grunt for minification of resources
-  - [ ] Set up Sass for clean maintainable css
+  - [x] Set up Grunt for minification of resources
+  - [x] Set up Sass for clean maintainable css
   - [ ] Set up UI-router for state based navigation
   - [ ] Set up Karma and Jasmine for testing
 
 - [ ] Computation Functionality: 6 hours
-  - [ ] mathService.js
-  - [ ] mathService.spec.js
+  - [ ] calc.service.js
+  - [ ] calc.spec.js
 
 - [ ] Calculator Directive (Calc): 4 hours
   - [ ] calc.js: controller
