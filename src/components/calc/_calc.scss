@@ -1,4 +1,7 @@
 .calculator {
-  @import "./button/button"
-  @import "./screen/screen"
+  @import "./button/button";
+  @import "./screen/screen";
+
+  background: blue;
+
 }

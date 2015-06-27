@@ -37,7 +37,7 @@ module.exports = function(grunt) {
     cssmin: {
       build: {
         files: {
-          'bin/css/style.min.css': 'bin/css/style.css'
+          'bin/css/styles.min.css': 'bin/css/styles.css'
         }
       }
     },
