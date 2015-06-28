@@ -1,4 +1,4 @@
-angular.module('calcApp', ['calc.components', 'ui.router']).config(function($stateProvider, $urlRouterProvider) {
+angular.module('calcApp', ['calc.directives','calc.services', 'ui.router']).config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
   $stateProvider
     .state('home', {
@@ -10,4 +10,5 @@ angular.module('calcApp', ['calc.components', 'ui.router']).config(function($sta
       templateUrl: 'src/app/about/about.tpl.html'
     });
 });
-angular.module('calc.components', []);
+angular.module('calc.directives', []);
+angular.module('calc.services', []);
