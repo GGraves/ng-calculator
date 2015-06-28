@@ -5,11 +5,11 @@ module.exports = function(grunt) {
     jshint: {
       all: ['public/src/**/*.js'] 
     },
-    //minify.js
-    uglify: {
+    //concat.js
+    concat: {
       build: {
         files: {
-          'public/bin/js/app.min.js': ['public/src/**/*.js', '!public/src/**/*.spec.js']
+          'public/bin/js/app.js': ['public/src/**/*.js', '!public/src/**/*.spec.js']
         }
       }
     },
@@ -38,10 +38,10 @@ module.exports = function(grunt) {
   });
   //load grunt tasks
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
   //default tasks to run 
-  grunt.registerTask('default', ['jshint', 'uglify', 'sass', 'cssmin']);  
+  grunt.registerTask('default', ['jshint', 'concat', 'sass', 'cssmin']);  
 };

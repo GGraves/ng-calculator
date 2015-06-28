@@ -3,19 +3,19 @@
   
   <head>
     <link rel="stylesheet" href="/bin/css/app.css" />
+    <script src="/vendor/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/vendor/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/bin/js/app.js" type="text/javascript" charset="utf-8"></script>
   </head>
 
   <body ng-app="calcApp">
     <ul>
-      <li><a ui-sref="home">Home</a></li>
-      <li><a ui-sref="about">About</a></li>
+      <li><a href="" ui-sref="home">Home</a></li>
+      <li><a href="" ui-sref="about">About</a></li>
     </ul>
     <div>
       <div ui-view></div>
     </div>
-    <script src="/vendor/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/vendor/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/bin/js/app.min.js" type="text/javascript" charset="utf-8"></script>
   </body>
 
 </html>
