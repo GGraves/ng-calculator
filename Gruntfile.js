@@ -1,23 +1,18 @@
 module.exports = function(grunt) {
-  
   grunt.initConfig({
-    
     pkg: grunt.file.readJSON('package.json'),
-
     //lint.js 
     jshint: {
-      all: ['src/**/*.js'] 
+      all: ['public/src/**/*.js'] 
     },
-
     //minify.js
     uglify: {
       build: {
         files: {
-          'bin/js/app.min.js': ['src/**/*.js', '!src/**/*.spec.js']
+          'public/bin/js/app.min.js': ['public/src/**/*.js', '!public/src/**/*.spec.js']
         }
       }
     },
-
     //compile.scss  
     sass: {
       build: {
@@ -28,38 +23,25 @@ module.exports = function(grunt) {
 
         },
         files: {                        
-          'bin/css/app.css': 'src/assets/css/app.scss'
+          'public/bin/css/app.css': 'public/src/assets/css/app.scss'
         }
       }
     },
-
     //minify.css
     cssmin: {
       build: {
         files: {
-          'bin/css/app.min.css': 'bin/css/app.css'
+          'public/bin/css/app.min.css': 'public/bin/css/app.css'
         }
       }
-    },
-
-    copy: {
-      main: {
-        files: [ 
-          {expand: true, cwd: 'src/', src: 'index.html', dest: 'bin/', filter: 'isFile' },
-        ]
-      }
     }
-
   });
-
   //load grunt tasks
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
-
   //default tasks to run 
-  grunt.registerTask('default', ['jshint', 'uglify', 'sass', 'cssmin', 'copy']);  
-
+  grunt.registerTask('default', ['jshint', 'uglify', 'sass', 'cssmin']);  
 };
