@@ -46,9 +46,6 @@ module.exports = function(grunt) {
       main: {
         files: [ 
           {expand: true, cwd: 'src/', src: 'index.html', dest: 'bin/', filter: 'isFile' },
-          {expand: true, cwd: 'vendor/angular/', src: 'angular.min.js', dest:'bin/js/', filter: 'isFile' }, 
-          {expand: true, cwd: 'vendor/angular-ui-router/release/', src: 'angular-ui-router.min.js', dest:'bin/js/', filter: 'isFile' }, 
-          {expand: true, cwd: 'vendor/jquery/dist/', src: 'jquery.min.js', dest:'bin/js/', filter: 'isFile' }
         ]
       }
     }
