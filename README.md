@@ -16,11 +16,11 @@ Development of this app consists of 5 main components, with a total time estimat
 Target delivery date of: Monday, June 29th
 ```
 
-- [ ] Application Prep: 6 hours
+- [x] Application Prep: 6 hours
   - [x] Set up Grunt for minification of resources
   - [x] Set up Sass for clean maintainable css
-  - [ ] Set up UI-router for state based navigation
-  - [ ] Set up Karma and Jasmine for testing
+  - [x] Set up UI-router for state based navigation
+  - [x] Set up Karma and Jasmine for testing
 
 - [ ] Computation Functionality: 6 hours
   - [ ] calc.service.js
