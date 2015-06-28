@@ -7,7 +7,18 @@ angular.module('calc.directives')
     templateUrl: '/src/components/calc/calc.html',
     controllerAs: 'calc',
     bindToController: true,
-    controller: function($scope){
+    controller: function($scope, CalcService){
+      
+      //CalcService.add();
+      //CalcService.clear();
+      //CalcService.decimal();
+      //CalcService.divide();
+      //CalcService.equals();
+      //CalcService.multiply();
+      //CalcService.percent();
+      //CalcService.sign();
+      //CalcService.subtract();
+
     }
   };
 });

@@ -22,9 +22,9 @@ Target delivery date of: Monday, June 29th
   - [x] Set up UI-router for state based navigation
   - [x] Set up Karma and Jasmine for testing
 
-- [ ] Computation Functionality: 6 hours
-  - [ ] calc.service.js
-  - [ ] calc.spec.js
+- [x] Computation Functionality: 6 hours
+  - [x] calc.service.js
+  - [x] calc.spec.js
 
 - [ ] Calculator Directive (Calc): 4 hours
   - [ ] calc.js: controller
