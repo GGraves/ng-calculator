@@ -15,7 +15,10 @@ angular.module('calc.directives')
       self.buttonSet = buttonSet();
       self.clear = clear;
       self.decimal = decimal;
+      self.divide = divide;
+      self.equals = equals;
       self.number = number;
+      self.operand = null;
       self.percent = percent;
       self.prevOperator = null;
       self.sign = sign;
@@ -83,6 +86,19 @@ angular.module('calc.directives')
 
       function decimal() {
         self.prevOperator = 'decimal';
+      }
+
+      function divide(value) {
+        self.prevOperator = 'divide';
+        self.operand = self.accum;
+      }
+
+      function equals() {
+        if(self.prevOperator && self.operand){
+          self.accum = CalcService[self.prevOperator](self.operand, self.accum); 
+          self.prevOperator = null;
+          self.operand = null;
+        }
       }
 
       //manipulate the value of the accumulator
