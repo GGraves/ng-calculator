@@ -11,10 +11,10 @@
   
   p {
     align-self:center; 
-    direction:rtl; 
+    text-align: right;
     flex:1; 
     font-size:72px; 
     margin:0; 
-    padding:22px;
+    padding-right:22px;
   }
 }

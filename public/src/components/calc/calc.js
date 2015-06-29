@@ -14,8 +14,9 @@ angular.module('calc.directives')
       self.buttonClick = buttonClick;
       self.buttonSet = buttonSet();
       self.clear = clear;
-      self.sign = sign;
+      self.number = number;
       self.prevOperator = null;
+      self.sign = sign;
       
       //set an array of buttons to be processed 
       //in object array format for extensibility 
@@ -49,19 +50,23 @@ angular.module('calc.directives')
 
         //check to see if object is of type number
         //else, call associated CalcService function
-        if(button.type !== 'clear' || 
-           button.type !== 'equals' || 
-           button.type !== 'sign' || 
-           button.type !== 'percent' || 
+
+        //console.log('btype', button.type);
+        //console.log(button.type !== 'clear');
+
+        if(button.type !== 'clear' && 
+           button.type !== 'equals' && 
+           button.type !== 'sign' && 
+           button.type !== 'percent' && 
            button.type !== 'decimal') {
           if(angular.isDefined(self[button.type])){
-            self[button.type](value);
+            self[button.type](button.value);
           } else {
             console.log('No associated function for button type:', button.type);
           }
         } else {
           if(angular.isDefined(self[button.type])){
-            self[button.type];
+            self[button.type]();
           } else {
             console.log('No associated function for button type:', button.type);
           }
@@ -70,18 +75,16 @@ angular.module('calc.directives')
       
       //clear screen and current operator 
       function clear() {
-        self.accum = 0; 
+        self.accum = CalcService.clear(); 
         prevOperator = null;
       }
 
       //manipulate the value of the accumulator
       function number(value) {
-        if(prevOperator) {
-          self.accum = value;
-        } else if(self.accum === 0){
+        if(self.prevOperator || self.accum === 0) {
           self.accum = value;
         } else {
-          if(self.accum.toString().length < 9) {
+          if((self.accum > 0 && self.accum.toString().length < 9) || (self.accum < 0 && self.accum.toString().length < 10)) {
             self.accum = Number(self.accum.toString() + value.toString());
           }
         }
