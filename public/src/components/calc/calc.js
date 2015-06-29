@@ -117,14 +117,17 @@ angular.module('calc.directives')
         if(self.prevOperator && self.operand) {
 
           if(self.equalsOnly && self.resetAllowed) {
-            self.accum = CalcService[self.prevOperator](self.operand, self.equalsOnlyOperand); 
+            var equalsOnlyReset = CalcService[self.prevOperator](self.operand, self.equalsOnlyOperand); 
+            self.accum = equalsOnlyReset.toString().length > 11 ? equalsOnlyReset.toExponential(2) : equalsOnlyReset;
           } else if(self.equalsOnly && !self.resetAllowed) { 
-            self.accum = CalcService[self.prevOperator](self.accum, self.equalsOnlyOperand); 
+            var equalsOnlyNoReset = CalcService[self.prevOperator](self.accum, self.equalsOnlyOperand); 
+            self.accum = equalsOnlyNoReset.toString().length > 11 ? equalsOnlyNoReset.toExponential(2) : equalsOnlyNoReset;
           } else {
             self.equalsOnlyOperand = self.accum;
             self.equalsOnly = true;
             self.resetAllowed = true;
-            self.accum = CalcService[self.prevOperator](self.operand, self.accum); 
+            var firstPress = CalcService[self.prevOperator](self.operand, self.accum); 
+            self.accum = firstPress.toString().length > 11 ? firstPress.toExponential(2) : firstPress;
           }
           self.operand = self.accum;
         }
@@ -171,7 +174,8 @@ angular.module('calc.directives')
 
       //convert current accumulator to a percentage of 100
       function percent() {
-        self.accum = CalcService.percent(self.accum);
+        var value = CalcService.percent(self.accum);
+        self.accum = value.toString().length > 11 ? value.toExponential(2) : value;
       }
 
       //change the sign of the value

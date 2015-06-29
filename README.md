@@ -26,8 +26,8 @@ Target delivery date of: Monday, June 29th
   - [x] calc.service.js
   - [x] calc.spec.js
 
-- [ ] Calculator Directive (Calc): 4 hours
-  - [ ] calc.js: controller
+- [x] Calculator Directive (Calc): 4 hours
+  - [x] calc.js: controller
   - [x] calc.html: template
   - [x] calc.scss: styles
 
