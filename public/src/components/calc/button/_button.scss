@@ -1,19 +1,26 @@
 .button {
   color:black; 
   display:flex; 
+  display:-webkit-flex;
   font-size:48px; 
   height:96px; 
   margin-right:1px; 
   text-align:center;
   
-  p {align-self:center; flex:1; text-align:center;}
+  p {
+    align-self:center; 
+    flex:1; 
+    text-align:center; 
+    -webkit-align-self:center, 
+    -webkit-flex:1
+  }
   
   &:last-child {margin-right:0px;}
   
-  &.flex-one {flex:1;}
+  &.flex-one {flex:1;-webkit-flex:1;}
   
   &.flex-two {
-    flex:2.01;
+    flex:2.01;-webkit-flex:2.01;
     p {padding:34px; text-align:left;}
   }
   
