@@ -49,8 +49,8 @@ angular.module('calc.directives')
         //else, call associated CalcService function
         if(button.type === 'number') {
           numberInput(button.value);
-        } else {
-          //do stuff
+        } else if(button.type === 'clear') {
+          clearAll();
         }
       }
 
@@ -65,6 +65,11 @@ angular.module('calc.directives')
             self.accum = Number(self.accum.toString() + value.toString());
           }
         }
+      }
+
+      function clearAll() {
+        self.accum = 0; 
+        prevOperator = null;
       }
 
       //CalcService.add();
