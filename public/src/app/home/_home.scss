@@ -1,0 +1,48 @@
+.home {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:nowrap;
+    
+
+  .left-container {
+    display:flex;
+    flex:1;
+    img {
+      flex:1;
+    }
+  }
+  .calc-container {
+    width: 400px;
+    justify-content: center;
+    display: flex;
+    flex-direction:column;
+    flex-wrap:nowrap;
+  
+    .top-img {
+      display:flex;
+      height: 291px;
+      flex:1;
+      img {
+        flex:1;
+      }
+    }
+
+    .bottom-img {
+      display:flex;
+      height: 150px;
+      flex:1;
+      img {
+        flex:1;
+      }
+    }
+  
+  }
+  .right-container {
+    display:flex;
+    flex:1;
+    img {
+      flex:1;
+    }
+  }
+}
