@@ -14,7 +14,9 @@ angular.module('calc.directives')
       self.buttonClick = buttonClick;
       self.buttonSet = buttonSet();
       self.clear = clear;
+      self.decimal = decimal;
       self.number = number;
+      self.percent = percent;
       self.prevOperator = null;
       self.sign = sign;
       
@@ -55,10 +57,10 @@ angular.module('calc.directives')
         //console.log(button.type !== 'clear');
 
         if(button.type !== 'clear' && 
+           button.type !== 'decimal' &&
            button.type !== 'equals' && 
-           button.type !== 'sign' && 
            button.type !== 'percent' && 
-           button.type !== 'decimal') {
+           button.type !== 'sign') {
           if(angular.isDefined(self[button.type])){
             self[button.type](button.value);
           } else {
@@ -79,23 +81,37 @@ angular.module('calc.directives')
         prevOperator = null;
       }
 
+      function decimal() {
+        self.prevOperator = 'decimal';
+      }
+
       //manipulate the value of the accumulator
       function number(value) {
         if(self.prevOperator || self.accum === 0) {
-          self.accum = value;
+          if(self.prevOperator === 'decimal'){
+            self.accum = Number(self.accum.toString() + '.' + value.toString());
+            self.prevOperator = null;
+          } else {
+            self.accum = value;
+          }
         } else {
-          if((self.accum > 0 && self.accum.toString().length < 9) || (self.accum < 0 && self.accum.toString().length < 10)) {
+          if(((self.accum < 0 && self.accum%1 !== 0) && self.accum.toString().length < 11) ||
+             ((self.accum < 0 || self.accum%1 !== 0) && self.accum.toString().length < 10) ||
+             ((self.accum > 0 || self.accum%1 === 0) && self.accum.toString().length < 9)) { 
             self.accum = Number(self.accum.toString() + value.toString());
           }
         }
+      }
+
+      //convert current accumulator to a percentage of 100
+      function percent() {
+        self.accum = CalcService.percent(self.accum);
       }
 
       //change the sign of the value
       function sign() {
         self.accum = CalcService.sign(self.accum);
       }
-
-      
 
       //CalcService.add();
       //CalcService.clear();

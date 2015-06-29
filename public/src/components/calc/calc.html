@@ -1,6 +1,8 @@
 <div class="calculator">
 
-  <screen ng-class="{'small-font': ((calc.accum > 0 && calc.accum.toString().length > 8) || (calc.accum < 0 && calc.accum.toString().length > 9))}" 
+  <screen ng-class="{'small-font': (((calc.accum < 0 && calc.accum%1 !== 0) && calc.accum.toString().length === 11) ||
+                                    ((calc.accum < 0 && calc.accum.toString().length === 10) && calc.accum%1 === 0) ||
+                                    ((calc.accum%1 !== 0 && calc.accum.toString().length === 10) && calc.accum > 0))}"
           accumulator="calc.accum"></screen>
 
   <div class="button-container">
