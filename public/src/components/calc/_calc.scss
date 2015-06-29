@@ -13,7 +13,15 @@
   height:584px;
   justify-content:flex-start;
   width:400px;
-  
+
+  //no text select
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
   .button-container {flex:1;}
   
   .button-row {
@@ -28,4 +36,11 @@
     
     &:last-child {margin-bottom:0px;}    
   }
+
+  .screen.small-font {
+    p {
+      font-size: 64px;
+    } 
+  }  
+
 }

@@ -1,6 +1,6 @@
 <div class="calculator">
 
-  <screen accumulator="calc.accum"></screen>
+  <screen ng-class="{'small-font': calc.accum.toString().length > 8}" accumulator="calc.accum"></screen>
 
   <div class="button-container">
     <div ng-repeat="buttonRow in calc.buttonSet" class="button-row">
