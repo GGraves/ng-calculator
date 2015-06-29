@@ -150,9 +150,9 @@ angular.module('calc.directives')
               self.accum = Number( 0 + '.' + value.toString());
             }
             self.decimalMode = false;
+            self.resetAllowed = false;
           } else {
             self.accum = value;
-            self.resetAllowed = false;
           }
         } else {
           if(self.decimalMode) {
