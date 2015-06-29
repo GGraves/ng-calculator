@@ -2,6 +2,25 @@
   @import "./button/button";
   @import "./screen/screen";
 
-  background: blue;
+  width: 394px;
+  height: 488px;
+  //padding: 15px;
+  border: 1px solid black; 
+
+  .button-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+  }
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
 
 }

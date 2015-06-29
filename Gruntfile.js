@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     //lint.js 
     jshint: {
-      all: ['public/src/**/*.js'] 
+      all: ['public/src/**/*.js','!public/src/**/*.spec.js'] 
     },
     //concat.js
     concat: {

@@ -1,3 +1,9 @@
-<div>
-  <p> my calc </p>
+<div class="calculator">
+
+  <screen></screen>
+
+  <div class="button-layout">
+    <button button-value="{{button.value}}" ng-repeat="button in calc.buttons"></button>
+  </div>
+
 </div>

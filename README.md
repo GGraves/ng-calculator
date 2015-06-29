@@ -37,6 +37,6 @@ Target delivery date of: Monday, June 29th
   - [ ] screen.scss: styles
 
 - [ ] Calculator Sub Directive (Button): 4 hours
-  - [ ] button.js: controller
-  - [ ] button.html: template
+  - [x] button.js: controller
+  - [x] button.html: template
   - [ ] button.scss: styles
