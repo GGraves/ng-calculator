@@ -2,25 +2,32 @@
   @import "./button/button";
   @import "./screen/screen";
 
-  width: 394px;
-  height: 488px;
-  //padding: 15px;
+  width: 400px;
+  height: 600px;
   border: 1px solid black; 
-
-  .button-layout {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: stretch;
-  }
-
+  background: #999999;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
+  
+  .button-container {
+    flex: 1;
+  }
 
+  .button-row {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    margin-bottom: 1px;
+    &:last-child {
+      margin-bottom: 0px;
+    }    
+  }
 }

@@ -2,8 +2,10 @@
 
   <screen></screen>
 
-  <div class="button-layout">
-    <button button-value="{{button.value}}" ng-repeat="button in calc.buttons"></button>
+  <div class="button-container">
+    <div ng-repeat="buttonRow in calc.buttonSet" class="button-row">
+      <button ng-repeat="button in buttonRow" button-object="{{button}}"></button>
+    </div>
   </div>
 
 </div>

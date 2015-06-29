@@ -1,6 +1,25 @@
 .button {
-  background: white;
-  border: 1px solid black;
-  width: 96px;
+  color: black;
   height: 96px;
+  margin-right: 1px;
+  
+  &:last-child {
+    margin-right: 0px;
+  }
+  &.flex-one {
+    flex: 1;
+  }
+  &.flex-two {
+    flex: 2;
+  }
+  &.orange {
+    background: #FF9900;
+    color: white;
+  }
+  &.light-grey {
+    background: #F1F1F1;
+  }
+  &.dark-grey {
+    background: #E7E7E7;
+  }
 }
