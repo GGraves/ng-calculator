@@ -8,6 +8,7 @@
   border:1px solid black; 
   display:flex;
   display:-webkit-flex;
+  flex: 1;
   flex-direction:column;
   flex-wrap:nowrap;
   font-family:"Courier New", Courier, monospace;
@@ -17,6 +18,7 @@
   width:300px;
   -webkit-align-content:stretch;
   -webkit-align-items:stretch;
+  -webkit-flex: 1;
   -webkit-flex-direction:column;
   -webkit-flex-wrap:nowrap;
   -webkit-justify-content:flext-start;
