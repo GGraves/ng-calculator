@@ -13,7 +13,9 @@ angular.module('calc.directives')
       self.accum = 0;
       self.buttonClick = buttonClick;
       self.buttonSet = buttonSet();
-      prevOperator = null;
+      self.clear = clear;
+      self.sign = sign;
+      self.prevOperator = null;
       
       //set an array of buttons to be processed 
       //in object array format for extensibility 
@@ -47,15 +49,33 @@ angular.module('calc.directives')
 
         //check to see if object is of type number
         //else, call associated CalcService function
-        if(button.type === 'number') {
-          numberInput(button.value);
-        } else if(button.type === 'clear') {
-          clearAll();
+        if(button.type !== 'clear' || 
+           button.type !== 'equals' || 
+           button.type !== 'sign' || 
+           button.type !== 'percent' || 
+           button.type !== 'decimal') {
+          if(angular.isDefined(self[button.type])){
+            self[button.type](value);
+          } else {
+            console.log('No associated function for button type:', button.type);
+          }
+        } else {
+          if(angular.isDefined(self[button.type])){
+            self[button.type];
+          } else {
+            console.log('No associated function for button type:', button.type);
+          }
         }
+      }
+      
+      //clear screen and current operator 
+      function clear() {
+        self.accum = 0; 
+        prevOperator = null;
       }
 
       //manipulate the value of the accumulator
-      function numberInput(value) {
+      function number(value) {
         if(prevOperator) {
           self.accum = value;
         } else if(self.accum === 0){
@@ -67,10 +87,12 @@ angular.module('calc.directives')
         }
       }
 
-      function clearAll() {
-        self.accum = 0; 
-        prevOperator = null;
+      //change the sign of the value
+      function sign() {
+        self.accum = CalcService.sign(self.accum);
       }
+
+      
 
       //CalcService.add();
       //CalcService.clear();
