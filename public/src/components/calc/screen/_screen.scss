@@ -1,4 +1,20 @@
-.screen {
-  background: black;
-  height:96px; 
+.screen { 
+  align-content:stretch; 
+  align-items:stretch; 
+  background:#3A3A3A; 
+  color:white; 
+  display:flex; 
+  flex-direction:row; 
+  flex-wrap:nowrap; 
+  height:100px; 
+  justify-content:flex-end;
+  
+  p {
+    align-self:center; 
+    direction:rtl; 
+    flex:1; 
+    font-size:88px; 
+    margin:0; 
+    padding:22px;
+  }
 }

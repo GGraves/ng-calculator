@@ -28,15 +28,15 @@ Target delivery date of: Monday, June 29th
 
 - [ ] Calculator Directive (Calc): 4 hours
   - [ ] calc.js: controller
-  - [ ] calc.html: template
-  - [ ] calc.scss: styles
+  - [x] calc.html: template
+  - [x] calc.scss: styles
 
-- [ ] Calculator Sub Directive (Screen): 4 hours
-  - [ ] screen.js: controller
-  - [ ] screen.html: template
-  - [ ] screen.scss: styles
+- [x] Calculator Sub Directive (Screen): 4 hours
+  - [x] screen.js: controller
+  - [x] screen.html: template
+  - [x] screen.scss: styles
 
-- [ ] Calculator Sub Directive (Button): 4 hours
+- [x] Calculator Sub Directive (Button): 4 hours
   - [x] button.js: controller
   - [x] button.html: template
-  - [ ] button.scss: styles
+  - [x] button.scss: styles

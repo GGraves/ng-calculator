@@ -2,32 +2,30 @@
   @import "./button/button";
   @import "./screen/screen";
 
-  width: 400px;
-  height: 600px;
-  border: 1px solid black; 
-  background: #999999;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: stretch;
+  align-content:stretch;
+  align-items:stretch;
+  background:#999999;
+  border:1px solid black; 
+  display:flex;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  font-family:"Courier New", Courier, monospace;
+  height:584px;
+  justify-content:flex-start;
+  width:400px;
   
-  .button-container {
-    flex: 1;
-  }
-
+  .button-container {flex:1;}
+  
   .button-row {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: stretch;
-    margin-bottom: 1px;
-    &:last-child {
-      margin-bottom: 0px;
-    }    
+    align-content:stretch;
+    align-items:stretch;
+    display:flex;
+    flex:1;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    margin-bottom:1px;
+    
+    &:last-child {margin-bottom:0px;}    
   }
 }

@@ -1,25 +1,25 @@
 .button {
-  color: black;
-  height: 96px;
-  margin-right: 1px;
+  color:black; 
+  display:flex; 
+  font-size:48px; 
+  height:96px; 
+  margin-right:1px; 
+  text-align:center;
   
-  &:last-child {
-    margin-right: 0px;
-  }
-  &.flex-one {
-    flex: 1;
-  }
+  p {align-self:center; flex:1; text-align:center;}
+  
+  &:last-child {margin-right:0px;}
+  
+  &.flex-one {flex:1;}
+  
   &.flex-two {
-    flex: 2;
+    flex:2.01;
+    p {padding:34px; text-align:left;}
   }
-  &.orange {
-    background: #FF9900;
-    color: white;
-  }
-  &.light-grey {
-    background: #F1F1F1;
-  }
-  &.dark-grey {
-    background: #E7E7E7;
-  }
+  
+  &.orange {background:#FF9900; color:white;}
+  
+  &.light-grey {background:#F1F1F1;}
+  
+  &.dark-grey {background:#E7E7E7; color:#3A3A3A;}
 }

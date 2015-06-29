@@ -1,10 +1,10 @@
 <div class="calculator">
 
-  <screen></screen>
+  <screen accumulator="calc.accum"></screen>
 
   <div class="button-container">
     <div ng-repeat="buttonRow in calc.buttonSet" class="button-row">
-      <button ng-repeat="button in buttonRow" button-object="{{button}}"></button>
+      <button ng-click="calc.buttonClick(button)" ng-repeat="button in buttonRow" button-object="{{button}}"></button>
     </div>
   </div>
 
