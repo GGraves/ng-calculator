@@ -10,6 +10,7 @@ angular.module('calc.directives')
     controller: function(CalcService) {
       
       var self = this;
+      self.add = add;
       self.accum = 0;
       self.buttonClick = buttonClick;
       self.buttonSet = buttonSet();
@@ -17,12 +18,26 @@ angular.module('calc.directives')
       self.decimal = decimal;
       self.divide = divide;
       self.equals = equals;
+      self.equalsOnly = false;
+      self.equalsOnlyOperand = null;
+      self.multiply = multiply;
       self.number = number;
       self.operand = null;
       self.percent = percent;
       self.prevOperator = null;
+      self.resetAllowed = false;
       self.sign = sign;
+      self.subtract = subtract;
       
+
+      //add function      
+      function add() {
+        self.prevOperator = 'add';
+        self.equalsOnly = false;
+        self.resetAllowed = true;
+        self.operand = self.accum;
+      }
+
       //set an array of buttons to be processed 
       //in object array format for extensibility 
       function buttonSet() {
@@ -38,7 +53,7 @@ angular.module('calc.directives')
           [{'type': 'number', 'value': 4, 'flex': 1}, 
             {'type': 'number', 'value': 5, 'flex': 1}, 
             {'type': 'number', 'value': 6, 'flex': 1}, 
-            {'type': 'minus', 'value': '-', 'flex': 1}],
+            {'type': 'subtract', 'value': '-', 'flex': 1}],
           [{'type': 'number', 'value': 1, 'flex': 1}, 
             {'type': 'number', 'value': 2, 'flex': 1}, 
             {'type': 'number', 'value': 3, 'flex': 1}, 
@@ -56,14 +71,7 @@ angular.module('calc.directives')
         //check to see if object is of type number
         //else, call associated CalcService function
 
-        //console.log('btype', button.type);
-        //console.log(button.type !== 'clear');
-
-        if(button.type !== 'clear' && 
-           button.type !== 'decimal' &&
-           button.type !== 'equals' && 
-           button.type !== 'percent' && 
-           button.type !== 'sign') {
+        if(button.type === 'number') {
           if(angular.isDefined(self[button.type])){
             self[button.type](button.value);
           } else {
@@ -78,43 +86,85 @@ angular.module('calc.directives')
         }
       }
       
-      //clear screen and current operator 
+      //clear screen and current accumulator
       function clear() {
         self.accum = CalcService.clear(); 
-        prevOperator = null;
+        self.equalsOnly = false;
+        self.resetAllowed = false;
+        self.prevOperator = null;
+        self.operand = CalcService.clear();
+        self.equalsOnlyOperand = CalcService.clear();
       }
 
-      function decimal() {
-        self.prevOperator = 'decimal';
+      //setting the previous Operator to decimal incase a user hits a number key
+      function decimal(value) {
+
+        self.decimalMode = true;
+    
       }
 
-      function divide(value) {
+      //setting the previous Operator to divide and storing the current accumulator as the operand to divide
+      function divide() {
         self.prevOperator = 'divide';
+        self.equalsOnly = false;
+        self.resetAllowed = true;
         self.operand = self.accum;
       }
 
+      //the main computation function that checks to make sure there is a previous Operator before doing anything
       function equals() {
-        if(self.prevOperator && self.operand){
-          self.accum = CalcService[self.prevOperator](self.operand, self.accum); 
-          self.prevOperator = null;
-          self.operand = null;
+
+        if(self.prevOperator && self.operand) {
+
+          if(self.equalsOnly && self.resetAllowed) {
+            self.accum = CalcService[self.prevOperator](self.operand, self.equalsOnlyOperand); 
+          } else if(self.equalsOnly && !self.resetAllowed) { 
+            self.accum = CalcService[self.prevOperator](self.accum, self.equalsOnlyOperand); 
+          } else {
+            self.equalsOnlyOperand = self.accum;
+            self.equalsOnly = true;
+            self.resetAllowed = true;
+            self.accum = CalcService[self.prevOperator](self.operand, self.accum); 
+          }
+          self.operand = self.accum;
         }
+      }
+
+      function multiply() {
+        self.prevOperator = 'multiply';
+        self.equalsOnly = false;
+        self.resetAllowed = true;
+        self.operand = self.accum;
       }
 
       //manipulate the value of the accumulator
       function number(value) {
-        if(self.prevOperator || self.accum === 0) {
-          if(self.prevOperator === 'decimal'){
-            self.accum = Number(self.accum.toString() + '.' + value.toString());
-            self.prevOperator = null;
+        if(self.accum === 0 || self.resetAllowed) {
+          if(self.decimalMode) {
+            if(self.accum%1 === 0 && !self.prevOperator) {
+              self.accum = Number(self.accum.toString() + '.' + value.toString());
+            } else {
+              self.accum = Number( 0 + '.' + value.toString());
+            }
+            self.decimalMode = false;
           } else {
             self.accum = value;
+            self.resetAllowed = false;
           }
         } else {
-          if(((self.accum < 0 && self.accum%1 !== 0) && self.accum.toString().length < 11) ||
-             ((self.accum < 0 || self.accum%1 !== 0) && self.accum.toString().length < 10) ||
-             ((self.accum > 0 || self.accum%1 === 0) && self.accum.toString().length < 9)) { 
-            self.accum = Number(self.accum.toString() + value.toString());
+          if(self.decimalMode) {
+            if(self.accum%1 === 0 && !self.prevOperator) {
+              self.accum = Number(self.accum.toString() + '.' + value.toString());
+            } else {
+              self.accum = Number( 0 + '.' + value.toString());
+            }
+            self.decimalMode = false;
+          }else{
+            if(((self.accum < 0 && self.accum%1 !== 0) && self.accum.toString().length < 11) ||
+              ((self.accum < 0 || self.accum%1 !== 0) && self.accum.toString().length < 10) ||
+              ((self.accum > 0 || self.accum%1 === 0) && self.accum.toString().length < 9)) { 
+                self.accum = Number(self.accum.toString() + value.toString());
+            }
           }
         }
       }
@@ -128,17 +178,14 @@ angular.module('calc.directives')
       function sign() {
         self.accum = CalcService.sign(self.accum);
       }
-
-      //CalcService.add();
-      //CalcService.clear();
-      //CalcService.decimal();
-      //CalcService.divide();
-      //CalcService.equals();
-      //CalcService.multiply();
-      //CalcService.percent();
-      //CalcService.sign();
-      //CalcService.subtract();
-
+      
+      //subtract function      
+      function subtract() {
+        self.prevOperator = 'subtract';
+        self.equalsOnly = false;
+        self.resetAllowed = true;
+        self.operand = self.accum;
+      }
     }
   };
 });

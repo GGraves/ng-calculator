@@ -23,7 +23,7 @@ angular.module('calc.directives')
 
       if(scope.buttonObject.type === 'clear' || scope.buttonObject.type === 'sign' || scope.buttonObject.type === 'percent'){
         scope.buttonColor = 'dark-grey';
-      } else if(scope.buttonObject.type === 'divide' || scope.buttonObject.type === 'multiply' || scope.buttonObject.type === 'minus' || scope.buttonObject.type === 'add' || scope.buttonObject.type === 'equals') {
+      } else if(scope.buttonObject.type === 'divide' || scope.buttonObject.type === 'multiply' || scope.buttonObject.type === 'subtract' || scope.buttonObject.type === 'add' || scope.buttonObject.type === 'equals') {
         scope.buttonColor = 'orange';
       } else {
         scope.buttonColor = 'light-grey';
